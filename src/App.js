@@ -1,13 +1,11 @@
-import './App.css';
-import TodoInput from './components/TodoInput';
-import TodoList from './components/TodoList';
+import "./App.css";
+import Home from "./components/Home";
 
-
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <div className="App m-5">
-      <TodoInput/>
-      <TodoList/>
+      <Home />
     </div>
   );
 }

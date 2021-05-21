@@ -1,51 +1,58 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { deleteTodo, updateTodo } from '../redux/actions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteTodo, updateTodo } from "../redux/actions";
+import { IconButton, Grid, TextField } from "@material-ui/core/";
+import { Delete, Edit, Save } from "@material-ui/icons/";
+function TodoItem({ todo, index }) {
+  console.log(todo);
+  const [editable, setEditable] = useState(false);
+  const [name, setName] = useState(todo.name);
+  let dispatch = useDispatch();
 
-function TodoItem({ todo }) {
-    const [editable, setEditable] = useState(false)
-    const [name, setName] = useState(todo.name)
-    let dispatch = useDispatch();
+  return (
+    <Grid container direction="row">
+      <Grid item xs={2}>
+        {index}
+      </Grid>
+      <Grid item xs={6}>
+        {editable ? (
+          <TextField
+            label="Todo Name "
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        ) : (
+          <h4>{todo.name}</h4>
+        )}
+      </Grid>
 
-    return (
-        <div>
-            <div className="row mx-2 align-items-center">
-                <div>#{todo.id.length > 1 ? todo.id[2] : todo.id}</div>
-                <div className="col">
-                    {editable ?
-                        <input 
-                           type="text" 
-                           className="form-control"
-                           
-                            value={name}
-                            onChange={(e) => {
-                                setName(e.target.value);
-                            }}
-
-                        />
-                        :
-                        <h4>{todo.name}</h4>}
-                </div>
-                <button className="btn btn-primary m-2"
-                    onClick={() => {
-                        dispatch(updateTodo({
-                            ...todo,
-                            name: name
-                        }))
-                        if(editable) {
-                         setName(todo.name);   
-                        }
-                        setEditable(!editable);
-                      
-
-                    }}
-                >{editable?"Update":"Edit"}</button>
-                <button className="btn btn-danger m-2"
-                    onClick={() => dispatch(deleteTodo(todo.id))}
-                >Delete</button>
-            </div>
-        </div>
-    )
+      <Grid item xs={2}>
+        <IconButton
+          aria-label="delete"
+          onClick={() => {
+            editable &&
+              dispatch(
+                updateTodo({
+                  ...todo,
+                  name: name,
+                })
+              );
+            setEditable(!editable);
+          }}
+        >
+          {editable ? <Save /> : <Edit />}
+        </IconButton>
+      </Grid>
+      <Grid item xs={2}>
+        <IconButton
+          aria-label="delete"
+          onClick={() => dispatch(deleteTodo(todo.id))}
+        >
+          <Delete />
+        </IconButton>
+      </Grid>
+    </Grid>
+  );
 }
 
-export default TodoItem
+export default TodoItem;
