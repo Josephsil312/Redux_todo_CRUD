@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo, updateTodo } from "../redux/actions";
-import { IconButton, Grid, TextField } from "@material-ui/core/";
+import { IconButton, Grid, TextField, Paper } from "@material-ui/core/";
 import { Delete, Edit, Save } from "@material-ui/icons/";
 function TodoItem({ todo, index }) {
   console.log(todo);
@@ -10,6 +10,7 @@ function TodoItem({ todo, index }) {
   let dispatch = useDispatch();
 
   return (
+    <Paper elevation={10}>
     <Grid container direction="row">
       <Grid item xs={2}>
         {index}
@@ -52,6 +53,7 @@ function TodoItem({ todo, index }) {
         </IconButton>
       </Grid>
     </Grid>
+  </Paper>
   );
 }
 
