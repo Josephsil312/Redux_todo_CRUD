@@ -18,7 +18,7 @@ function TodoItem({ todo, index }) {
       <Grid item xs={6}>
         {editable ? (
           <TextField
-            label="Todo Name "
+            label="Todo List "
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
