@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { addTodo } from "../redux/actions";
 import { v1 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
+
 import { TextField, Grid } from "@material-ui/core/";
 import Button from '@material-ui/core/Button';
 
@@ -10,12 +10,23 @@ function TodoInput() {
   let [name, setName] = useState();
   let dispatch = useDispatch();
   return (
+<<<<<<< HEAD
       <Paper elevation={10}>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <TextField
             placeholder = 'Enter what you wanna do'
             label="Todo Name"
+=======
+    // eslint-disable-next-line no-undef
+    
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <TextField
+            placeholder="Enter what you wanna do"
+
+            label="Todo List"
+>>>>>>> 0023b71 (add changes)
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -33,13 +44,23 @@ function TodoInput() {
               );
               setName("");
             }}
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> 0023b71 (add changes)
           >
             Add Todo
           </Button>
         </Grid>
       </Grid>
+<<<<<<< HEAD
     </Paper>
+=======
+    
+
+
+>>>>>>> 0023b71 (add changes)
   );
 }
 
