@@ -4,12 +4,26 @@ import { v1 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Grid } from "@material-ui/core/";
+import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles({
+  root: {
+    marginTop: 16,
+    marginBottom: 5,
+    padding: 16,
+    border: '1px solid'
+
+  },
+
+});
 
 function TodoInput() {
   let [name, setName] = useState();
   let dispatch = useDispatch();
+  const classes = useStyles();
   return (
+     <Container maxWidth="sm" className={classes.root}>
       <Paper elevation={10}>
       <Grid container spacing={3}>
         <Grid item xs={6}>
@@ -40,6 +54,7 @@ function TodoInput() {
         </Grid>
       </Grid>
     </Paper>
+  </Container>
   );
 }
 
