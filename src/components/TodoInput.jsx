@@ -24,7 +24,7 @@ function TodoInput() {
   const classes = useStyles();
   return (
      <Container maxWidth="sm" className={classes.root}>
-      <Paper elevation={10}>
+      
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <TextField
@@ -53,7 +53,7 @@ function TodoInput() {
           </Button>
         </Grid>
       </Grid>
-    </Paper>
+   
   </Container>
   );
 }
